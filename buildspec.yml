@@ -5,13 +5,12 @@ phases:
     commands:
       - echo "Installing dependencies"
       - npm install
-  build:
+  pre_build:
     commands:
-      - echo "Building the Node.js app"
-      - npm run build
+      - echo "Running pre-build steps"
   post_build:
     commands:
-      - echo "Build complete"
+      - echo "Build complete, starting application"
 
 artifacts:
   files:
