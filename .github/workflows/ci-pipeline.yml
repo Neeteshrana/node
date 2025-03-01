@@ -1,0 +1,32 @@
+name: CI/CD Pipeline
+
+# Trigger the workflow on push or pull request to the 'master' branch
+on:
+  push:
+    branches:
+      - master  # Updated from 'main' to 'master'
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Runs the pipeline on an Ubuntu runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4  # Clones the repository
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  # Change this version if needed
+
+      - name: Install Dependencies
+        run: npm install  # Installs project dependencies
+
+      - name: Run Tests
+        run: npm test  # Runs tests (modify if not applicable)
+
+      - name: Build Project
+        run: npm run build  # Builds the project (modify as needed)
